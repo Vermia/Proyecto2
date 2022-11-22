@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public class Videojuego {
 	// Atributos:
-	private Long id;
+	private int id;
 	private String nombre;
-	private LocalDate fecha;
+	private int lanzamiento;
 	private String editora;
 	private String plataforma;
 	private String genero;
@@ -20,12 +20,12 @@ public class Videojuego {
 	// Constructores;
 	public Videojuego() {}
 
-	public Videojuego(Long id, String nombre, LocalDate fecha, String editora, String plataforma, String genero,
+	public Videojuego(int id, String nombre, int lanzamiento, String editora, String plataforma, String genero,
 			double ventasAmerica, double ventasEuropa, double ventasJapon, double ventasOtros) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.fecha = fecha;
+		this.lanzamiento = lanzamiento;
 		this.editora = editora;
 		this.plataforma = plataforma;
 		this.genero = genero;
@@ -37,14 +37,14 @@ public class Videojuego {
 	}
 	
 	// Getters y Setters:
-	public Long getId() { return id; }
-	public void setId(Long id) { this.id = id; }
+	public int getId() { return id; }
+	public void setId(int id) { this.id = id; }
 
 	public String getNombre() { return nombre; }
 	public void setNombre(String nombre) { this.nombre = nombre; }
 
-	public LocalDate getFecha() { return fecha; }
-	public void setFecha(LocalDate fecha) { this.fecha = fecha; }
+	public int getLanzamiento() { return lanzamiento; }
+	public void setLanzamiento(int lanzamiento) { this.lanzamiento = lanzamiento; }
 
 	public String getEditora() { return editora; }
 	public void setEditora(String editora) { this.editora = editora; }
@@ -73,7 +73,7 @@ public class Videojuego {
 	// toString:
 	@Override
 	public String toString() {
-		return "Videojuego [id=" + id + ", nombre=" + nombre + ", fecha=" + fecha + ", editora=" + editora
+		return "Videojuego [id=" + id + ", nombre=" + nombre + ", lanzamiento=" + lanzamiento + ", editora=" + editora
 				+ ", plataforma=" + plataforma + ", genero=" + genero + ", ventasAmerica=" + ventasAmerica
 				+ ", ventasEuropa=" + ventasEuropa + ", ventasJapon=" + ventasJapon + ", ventasOtros=" + ventasOtros
 				+ ", ventasGlobal=" + ventasGlobal + "]";
@@ -82,7 +82,7 @@ public class Videojuego {
 	// hashCode:
 	@Override
 	public int hashCode() {
-		return Objects.hash(editora, fecha, genero, id, nombre, plataforma, ventasAmerica, ventasEuropa, ventasGlobal,
+		return Objects.hash(editora, lanzamiento, genero, id, nombre, plataforma, ventasAmerica, ventasEuropa, ventasGlobal,
 				ventasJapon, ventasOtros);
 	}
 
@@ -94,7 +94,7 @@ public class Videojuego {
 		if (getClass() != obj.getClass()) return false;
 		
 		Videojuego other = (Videojuego) obj;
-		return Objects.equals(editora, other.editora) && Objects.equals(fecha, other.fecha)
+		return Objects.equals(editora, other.editora) && Objects.equals(lanzamiento, other.lanzamiento)
 				&& Objects.equals(genero, other.genero) && Objects.equals(id, other.id)
 				&& Objects.equals(nombre, other.nombre) && Objects.equals(plataforma, other.plataforma)
 				&& Double.doubleToLongBits(ventasAmerica) == Double.doubleToLongBits(other.ventasAmerica)
