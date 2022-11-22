@@ -28,12 +28,19 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	public List<Videojuego> cargaJuegos() {
 		return videoJuegoRepository.cargaJuegos();
 	}
-	
+	/**
+	 * @author Martin
+	 * Guarda un nuevo Videojuego en la BD
+	 */
 	@Override
 	public void save(Videojuego juego) {
 		videojuegoBBDD.save(juego);
 	}
 	
+	/**
+	 * @author Martin
+	 * Lista todos los Videojuegos de la BD
+	 */
 	@Override
 	public List<Videojuego> findAll(){
 		return videojuegoBBDD.findAll();
