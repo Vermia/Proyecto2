@@ -12,8 +12,7 @@ import com.proyecto2.spring.model.Videojuego;
 
 @Repository
 public interface VideojuegoBBDD extends JpaRepository<Videojuego, Integer>{
-	List<Videojuego> findByNombre(String nombre);
+	public List<Videojuego> findByNombre(String nombre);
 		
-	@Query("FROM videojuegos WHERE nombre =?1")
-	List<Videojuego> buscarPorNombre(String nombre);
+	public Videojuego save(Videojuego juego);
 }
