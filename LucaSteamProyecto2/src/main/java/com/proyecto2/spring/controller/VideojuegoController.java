@@ -58,7 +58,12 @@ public class VideojuegoController {
 	@GetMapping
 	
 	public List<Videojuego>cargaJuegos(){
-		return null;
+		List<Videojuego> listjuego = service.cargaJuegos();
+		
+		for(Videojuego videojuego: listjuego) {
+			altaJuegos(videojuego);
+		}
+		return listjuego;
 		
 	}
 	
