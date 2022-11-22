@@ -1,6 +1,7 @@
 package com.proyecto2.spring.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,6 +93,18 @@ public class VideojuegoController {
 	@GetMapping
 	public List<Videojuego>listarJuegos(){
 		return service.findAll();
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return Método que se encarga de buscar
+	 * un juego por el id indicado en la BBDD.
+	 */
+	
+	@GetMapping
+	public Optional<Videojuego> buscarJuego(int id){
+		return service.findById(id);
 	}
 	
 	
