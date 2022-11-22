@@ -20,6 +20,14 @@ import com.proyecto2.spring.service.VideojuegoService;
  */
 @RestController
 @RequestMapping("/videojuego")
+
+/**
+ * 
+ * Clase VideojuegoController que se encarga 
+ * de acceder a los metodos REST
+ *
+ */
+
 public class VideojuegoController {
 	
 	@Autowired
@@ -27,15 +35,43 @@ public class VideojuegoController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(VideojuegoController.class);
 	
+	/**
+	 * 
+	 * @return Metodo que se encarga
+	 * de cargar los juegos de un csv.
+	 */
+	
+	
 	@GetMapping
 	public List<Videojuego>cargaJuegos(){
 		return null;
 		
 	}
 	
+	/**
+	 * 
+	 * @return Método que se encarga de dar de alta
+	 * los juegos y guardarlos en la BBDD
+	 * 
+	 * 
+	 * */
+	
+	
 	@PostMapping
 	public void altaJuegos(@RequestBody Videojuego juego) {
 		service.save(juego);
+	}
+	
+	/**
+	 * 
+	 * @return Método que se encarga de listar los juegos
+	 * de la BBDD.
+	 */
+	
+	@GetMapping
+	public List<Videojuego>listarJuegos(){
+		return service.findAll();
+		
 	}
 	
 	
