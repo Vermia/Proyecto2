@@ -11,15 +11,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.proyecto2.spring.model.Videojuego;
 import com.proyecto2.spring.service.VideojuegoService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 /**
  * 
  * @author Ioan
  *
  */
-@RestController
-@RequestMapping("/videojuego")
+
 
 /**
  * 
@@ -27,7 +34,9 @@ import com.proyecto2.spring.service.VideojuegoService;
  * de acceder a los metodos REST
  *
  */
-
+@RestController
+@RequestMapping("/videojuego")
+@Tag(name = "movil", description = "Movil API")
 public class VideojuegoController {
 	
 	@Autowired
@@ -43,6 +52,7 @@ public class VideojuegoController {
 	
 	
 	@GetMapping
+	
 	public List<Videojuego>cargaJuegos(){
 		return null;
 		
@@ -56,7 +66,12 @@ public class VideojuegoController {
 	 * 
 	 * */
 	
-	
+	@Operation(summary = "Dar de alta un juego", description = "A partir del cuerpo de la request, agregar un nuevo juego a la base de datos", tags = 
+		{"videojuego" })
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "201", description = "Juego creado", content = {
+				@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
+		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content)})
 	@PostMapping
 	public void altaJuegos(@RequestBody Videojuego juego) {
 		service.save(juego);
@@ -66,13 +81,17 @@ public class VideojuegoController {
 	 * 
 	 * @return Método que se encarga de listar los juegos
 	 * de la BBDD.
-	 * Nuevo comentario
 	 */
 	
+	@Operation(summary = "Listar todos los juegos", description = "Crea y muestra una lista con todos los videojuegos almacenados", tags = 
+		{"videojuego" })
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Juegos mostrados", content = {
+				@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
+		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content)})
 	@GetMapping
 	public List<Videojuego>listarJuegos(){
 		return service.findAll();
-		
 	}
 	
 	

@@ -14,6 +14,7 @@
 	<name>LucaSteamProyecto2</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
+		<org.springdoc-version>1.6.4</org.springdoc-version>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
@@ -45,6 +46,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${org.springdoc-version}</version>
 		</dependency>
 	</dependencies>
 
