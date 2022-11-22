@@ -66,6 +66,7 @@ public class VideojuegoController {
 	 * 
 	 * @return Método que se encarga de listar los juegos
 	 * de la BBDD.
+	 * Nuevo comentario
 	 */
 	
 	@GetMapping
