@@ -20,15 +20,15 @@ public class AppConfig {
 	@Bean
 	public OpenAPI VideojuegoOpenAPI() {
 		return new OpenAPI()
-				.info(new Info().title("API videojuegos")
+				.info(new Info().title("API Videojuegos")
 				.description("Documentacion de la API videojuegos")		
 				.version("v1.0")
-				.contact(new Contact().name("Ioan Stirbu").
-						url("https://ioanstirbu.es").email("ioan@stirbu.es"))
+				.contact(new Contact().name("Grupo2").
+						url("https://grupo2@proyecto2.es").email("grupo2@proyecto2.es"))
 				.license(new License().name("Licencia de Pago").url("http://springdoc.org")))
 				.externalDocs(new ExternalDocumentation()
 				.description("API de administracion de videojuegos para la plataforma LucaSteam")
-				.url("https://miproyecto.es"));
+				.url("https://proyecto2.es"));
 						
 	}
 }
