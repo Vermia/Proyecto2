@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
+import org.springframework.stereotype.Repository;
 
 import com.proyecto2.spring.model.Videojuego;
 /**
@@ -22,6 +23,7 @@ import com.proyecto2.spring.model.Videojuego;
  * @author Martin
  *
  */
+@Repository
 public class VideojuegoRepositoryImpl implements VideojuegoRepository{
 	/**
 	 * @author Martin
@@ -32,7 +34,7 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository{
 		ArrayList<Videojuego> coleccionObtenida = new ArrayList<Videojuego>();
 		
 		try {
-			FileReader filereader = new FileReader(new File("files/vgales.csv"));
+			FileReader filereader = new FileReader(new File("files/vgsales.csv"));
 			BufferedReader bufferedreader = new BufferedReader(filereader);
 			bufferedreader.readLine(); // La primera linea son las cabeceras
 			String line = bufferedreader.readLine();
