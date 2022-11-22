@@ -9,5 +9,5 @@ public interface VideojuegoService {
 	public List<Videojuego> cargaJuegos();
 	
 	public void save(Videojuego juego);
-
+	public List<Videojuego> findAll();
 }
