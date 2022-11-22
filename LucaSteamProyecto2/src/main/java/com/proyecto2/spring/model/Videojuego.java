@@ -1,10 +1,21 @@
 package com.proyecto2.spring.model;
 
-import java.time.LocalDate;
+
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="videojuegos")
 public class Videojuego {
 	// Atributos:
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String nombre;
 	private int lanzamiento;
@@ -37,6 +48,7 @@ public class Videojuego {
 	}
 	
 	// Getters y Setters:
+	@Column(name="id")
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }
 
