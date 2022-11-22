@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyecto2.spring.model.Videojuego;
+import com.proyecto2.spring.repository.VideojuegoBBDD;
 import com.proyecto2.spring.repository.VideojuegoRepository;
 /**
  * 
@@ -16,6 +17,8 @@ import com.proyecto2.spring.repository.VideojuegoRepository;
 public class VideojuegoServiceImpl implements VideojuegoService {
 	@Autowired
 	private VideojuegoRepository videoJuegoRepository;
+	@Autowired
+	private VideojuegoBBDD videojuegoBBDD;
 	
 	/**
 	 * Este método se encarga de cargar los juegos 
@@ -24,6 +27,11 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	@Override
 	public List<Videojuego> cargaJuegos() {
 		return videoJuegoRepository.cargaJuegos();
+	}
+	
+	
+	public void save(Videojuego juego) {
+		videojuegoBBDD.save(juego);
 	}
 
 }

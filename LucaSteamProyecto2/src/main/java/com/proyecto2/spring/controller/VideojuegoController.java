@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto2.spring.model.Videojuego;
 import com.proyecto2.spring.service.VideojuegoService;
-
+/**
+ * 
+ * @author Ioan
+ *
+ */
 @RestController
 @RequestMapping("/videojuego")
 public class VideojuegoController {
