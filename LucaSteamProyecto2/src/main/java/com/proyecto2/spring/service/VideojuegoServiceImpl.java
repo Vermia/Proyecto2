@@ -1,6 +1,7 @@
 package com.proyecto2.spring.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,15 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	@Override
 	public List<Videojuego> findAll(){
 		return videojuegoBBDD.findAll();
+	}
+	
+	@Override
+	/**
+	 * @author Pedro
+	 * Muestra un Videojuego especifico (si existe) de la Base de Datos
+	 */
+	public Optional<Videojuego> findById(int id){
+		return videojuegoBBDD.findById(id);
 	}
 
 }
