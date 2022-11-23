@@ -26,8 +26,6 @@ class LucaSteamProyecto2ApplicationTests {
 	@Autowired
 	VideojuegoController controller;
 	@Autowired
-	TestRestTemplate restTempl;
-	@Autowired
 	VideojuegoRepository vidRep;
 
 	/**
