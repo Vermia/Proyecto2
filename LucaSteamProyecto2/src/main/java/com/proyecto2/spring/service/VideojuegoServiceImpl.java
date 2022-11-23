@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.proyecto2.spring.model.Videojuego;
@@ -23,6 +25,7 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	@Autowired
 	private VideojuegoBBDD videojuegoBBDD;
 	
+	
 	/**
 	 * Este método se encarga de cargar los juegos 
 	 * de la capa datos
@@ -37,8 +40,8 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	 */
 	
 	@Override
-	public void save(Videojuego juego) {
-		videojuegoBBDD.save(juego);
+	public Videojuego save(Videojuego juego) {
+		return videojuegoBBDD.save(juego);
 	}
 	
 	/**
