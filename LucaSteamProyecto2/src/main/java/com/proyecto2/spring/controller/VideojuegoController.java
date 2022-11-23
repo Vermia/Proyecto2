@@ -3,12 +3,14 @@ package com.proyecto2.spring.controller;
 import java.net.URI;
 import java.util.Collection;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +41,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  */
 @RestController
 @RequestMapping("/videojuego")
-@Tag(name = "movil", description = "Movil API")
+@Tag(name = "videojuego", description = "Juegos API")
 public class VideojuegoController {
 	@Autowired
 	private VideojuegoService service;
@@ -97,7 +99,7 @@ public class VideojuegoController {
 		return ResponseEntity.created(ubicacion).build();
 
 	}*/
-	@PostMapping
+	@PostMapping()
 	public void altaJuegos(@RequestBody Videojuego juego) {
 		service.save(juego);
 	}
@@ -135,4 +137,21 @@ public class VideojuegoController {
 		return service.findById(id);
 	}
 
+	@Operation(summary = "Borrar un videojuego", description = "Busca un videojuego en la base de datos y lo elimina", tags = {
+		"videojuego" })
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Juegos mostrados", content = {
+				@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
+		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) ,
+		@ApiResponse(responseCode = "404", description = "No encontrado ", content = @Content)})
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Videojuego> borrarJuego(@PathVariable int id) {
+		Videojuego videojuego = null;
+		try {
+			videojuego=service.deleteById(id);
+		} catch(NoSuchElementException ex) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(videojuego);
+	}
 }

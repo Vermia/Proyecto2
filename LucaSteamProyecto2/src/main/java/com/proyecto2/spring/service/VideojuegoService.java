@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import com.proyecto2.spring.model.Videojuego;
 
 public interface VideojuegoService {
+	
 
 	public List<Videojuego> cargaJuegos();
 	
@@ -16,4 +17,6 @@ public interface VideojuegoService {
 	public List<Videojuego> findAll();
 	
 	public Optional<Videojuego> findById(int id);
+	
+	public Videojuego deleteById(int id);
 }

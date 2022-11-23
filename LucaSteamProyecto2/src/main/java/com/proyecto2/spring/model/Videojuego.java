@@ -145,4 +145,12 @@ public class Videojuego {
 		return res;
 	}
 
+	@Override
+	public String toString() {
+		return "Videojuego [id=" + id + ", nombre=" + nombre + ", lanzamiento=" + lanzamiento + ", editora=" + editora
+				+ ", plataforma=" + plataforma + ", genero=" + genero + ", ventasamerica=" + ventasamerica
+				+ ", ventaseuropa=" + ventaseuropa + ", ventasjapon=" + ventasjapon + ", ventasotros=" + ventasotros
+				+ ", ventasglobal=" + ventasglobal + "]";
+	}
+
 }

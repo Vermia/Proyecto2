@@ -42,6 +42,7 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	@Override
 	public Videojuego save(Videojuego juego) {
 		return videojuegoBBDD.save(juego);
+		
 	}
 	
 	/**
@@ -60,6 +61,17 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	 */
 	public Optional<Videojuego> findById(int id){
 		return videojuegoBBDD.findById(id);
+	}
+	
+	/**
+	 * @author Martin
+	 * Borra un videojuego de la BD
+	 */
+	@Override
+	public Videojuego deleteById(int id) {
+		Optional<Videojuego> j = videojuegoBBDD.findById(id);
+		videojuegoBBDD.deleteById(id);
+		return j.get();
 	}
 
 }

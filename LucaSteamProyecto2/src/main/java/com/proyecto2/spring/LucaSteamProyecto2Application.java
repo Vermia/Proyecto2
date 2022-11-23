@@ -23,6 +23,6 @@ public class LucaSteamProyecto2Application implements CommandLineRunner{
 		videojuegoController.cargaJuegos();
 		
 		System.out.println("AAAAA");
-;	}
+	}
 
 }
