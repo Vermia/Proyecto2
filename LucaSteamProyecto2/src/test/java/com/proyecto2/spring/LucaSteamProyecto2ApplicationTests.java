@@ -51,6 +51,10 @@ class LucaSteamProyecto2ApplicationTests {
 		assertThat(lista.size()).isEqualTo(16598);
 	}
 	
+	/**
+	 * Comprobar que la lista no sea vacia
+	 */
+	
 	@Test
 	void testListaCreadaNoVacia() {
 		Videojuego j1 = new Videojuego(1, "a" );
@@ -63,10 +67,39 @@ class LucaSteamProyecto2ApplicationTests {
 		assertThat(res.getBody()).isNotEmpty();
 	}
 	
+	/**
+	 * .Comprobar que ninguno de los juegos sea null
+	 */
+	
 	@Test
 	void testJuegoNoNull() {
+		boolean nulo = false;
+		ArrayList<Videojuego> lista = (ArrayList<Videojuego>) vidRep.cargaJuegos();
+		
+		
+		for(Videojuego videojuego : lista) {
+			if(videojuego == null) {
+				nulo = true;
+			}
+		}
+		
+		assertThat(nulo).isFalse();
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * Comprobar que el juego dado de alta exista
+	 */
+	
+	
 	
 	
 }
