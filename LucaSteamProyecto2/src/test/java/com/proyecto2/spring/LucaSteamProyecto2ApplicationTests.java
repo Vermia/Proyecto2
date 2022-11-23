@@ -16,6 +16,7 @@ import com.proyecto2.spring.controller.VideojuegoController;
 import com.proyecto2.spring.model.Videojuego;
 import com.proyecto2.spring.repository.VideojuegoRepository;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 /**
  * 
@@ -120,7 +121,9 @@ class LucaSteamProyecto2ApplicationTests {
 			antesEsta=true;
 		}
 		controller.borrarJuego(80000);
-		if( ! controller.buscarJuego(80000).isPresent()) {
+		try {
+			controller.buscarJuego(80000);
+		} catch (EmptyResultDataAccessException ex) {
 			despuesEsta=false;
 		}
 		
