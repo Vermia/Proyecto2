@@ -132,7 +132,14 @@ public class VideojuegoController {
 	 *         BBDD.
 	 */
 
-	@GetMapping("/{id}")
+	@Operation(summary = "Listar un videojuego", description = "Busca un videojuego en la base de datos y lo muestra", tags = {
+		"videojuego" })
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Juego mostrado", content = {
+				@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
+		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) ,
+		@ApiResponse(responseCode = "404", description = "No encontrado ", content = @Content)})
+		@GetMapping("/{id}")
 	public Optional<Videojuego> buscarJuego(@PathVariable int id) {
 		return service.findById(id);
 	}
@@ -140,7 +147,7 @@ public class VideojuegoController {
 	@Operation(summary = "Borrar un videojuego", description = "Busca un videojuego en la base de datos y lo elimina", tags = {
 		"videojuego" })
 	@ApiResponses(value = {
-		@ApiResponse(responseCode = "200", description = "Juegos mostrados", content = {
+		@ApiResponse(responseCode = "200", description = "Juego eliminado", content = {
 				@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
 		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) ,
 		@ApiResponse(responseCode = "404", description = "No encontrado ", content = @Content)})
