@@ -27,6 +27,10 @@ public class Videojuego {
 	// Constructores;
 	public Videojuego() {
 	}
+	
+	public Videojuego(int id, String nombre) {
+		this.id=id; this.nombre=nombre;
+	}
 
 	public Videojuego(int id, String nombre, int lanzamiento, String editora, String plataforma, String genero,
 			double ventasamerica, double ventaseuropa, double ventasjapon, double ventasotros) {
