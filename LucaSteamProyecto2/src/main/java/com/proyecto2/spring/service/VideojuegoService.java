@@ -19,4 +19,6 @@ public interface VideojuegoService {
 	public Optional<Videojuego> findById(int id);
 	
 	public Videojuego deleteById(int id);
+
+	public List<Videojuego> findByGenero(String genero);
 }

@@ -63,6 +63,7 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 		return videojuegoBBDD.findById(id);
 	}
 	
+
 	/**
 	 * @author Martin
 	 * Borra un videojuego de la BD
@@ -73,5 +74,16 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 		videojuegoBBDD.deleteById(id);
 		return j.get();
 	}
+
+	@Override
+	/**
+	 * @author Pablo
+	 * Muestra un Videojuego del genero que desee el usuario
+	 */
+	public List<Videojuego> findByGenero(String genero) {
+		return videojuegoBBDD.findByGenero(genero);
+	}
+
+
 
 }
