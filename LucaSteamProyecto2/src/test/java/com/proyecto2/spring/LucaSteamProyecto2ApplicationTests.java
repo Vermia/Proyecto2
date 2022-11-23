@@ -101,7 +101,11 @@ class LucaSteamProyecto2ApplicationTests {
 		assertThat(controller.buscarJuego(99998)).isNotNull();
 	}
 	
-	
+	@Test
+	void testMismoGeneroLista() {
+
+		assertThat(controller.filtrarPorGenero("Action")).isEmpty();
+	}
 	
 	
 	

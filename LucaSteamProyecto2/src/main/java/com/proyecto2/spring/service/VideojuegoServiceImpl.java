@@ -61,5 +61,15 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	public Optional<Videojuego> findById(int id){
 		return videojuegoBBDD.findById(id);
 	}
+	
+	@Override
+	/**
+	 * @author Pablo
+	 * Muestra un Videojuego del genero que desee el usuario
+	 */
+	public List<Videojuego> findByGenero(String genero) {
+		return videojuegoBBDD.findByGenero(genero);
+	}
+
 
 }

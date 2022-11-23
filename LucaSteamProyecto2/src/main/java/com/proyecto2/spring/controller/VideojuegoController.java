@@ -134,5 +134,15 @@ public class VideojuegoController {
 	public Optional<Videojuego> buscarJuego(@PathVariable int id) {
 		return service.findById(id);
 	}
+	
+	/**
+	 * @param genero
+	 * @return Método que se encarga de buscar los videojuegos por el filtro
+	 * deseado por el usuario
+	 */
+	@GetMapping("/{genero}")
+	public List<Videojuego> filtrarPorGenero(@PathVariable String genero){
+		return service.findByGenero(genero);
+	}
 
 }
