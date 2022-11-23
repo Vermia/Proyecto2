@@ -14,5 +14,5 @@ import com.proyecto2.spring.model.Videojuego;
 public interface VideojuegoBBDD extends JpaRepository<Videojuego, Integer>{
 	public List<Videojuego> findByNombre(String nombre);
 		
-	public Videojuego save(Videojuego juego);
+	
 }
