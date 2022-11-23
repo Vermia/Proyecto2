@@ -105,7 +105,7 @@ class LucaSteamProyecto2ApplicationTests {
 	@Test
 	void testMismoGeneroLista() {
 
-		assertThat(controller.filtrarPorGenero("Action")).isEmpty();
+		assertThat(controller.filtrarPorGenero("Action")).isNotEmpty();
 	}
 	
 	
