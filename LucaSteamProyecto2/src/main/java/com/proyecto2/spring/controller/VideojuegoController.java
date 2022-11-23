@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 
 import com.proyecto2.spring.model.Videojuego;
 import com.proyecto2.spring.service.VideojuegoService;
@@ -46,7 +46,7 @@ public class VideojuegoController {
 	@Autowired
 	private VideojuegoService service;
 
-	private static final Logger logger = LoggerFactory.getLogger(VideojuegoController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(VideojuegoController.class);
 
 	/**
 	 * 
