@@ -33,7 +33,7 @@ class LucaSteamProyecto2ApplicationTests {
 	 * Test que omprueba que el archivo csv exista
 	 */
 	
-	@Disabled
+	@Disabled //Ponemos disabled a las que tienen cargaJuegos para que sea mas rapido
 	@Test
 	void testListaFicheroNoVacia() {
 		ArrayList<Videojuego> lista = (ArrayList<Videojuego>) vidRep.cargaJuegos();
@@ -74,6 +74,7 @@ class LucaSteamProyecto2ApplicationTests {
 	 * .Comprobar que ninguno de los juegos sea null
 	 */
 	
+	@Disabled
 	@Test
 	void testJuegoNoNull() {
 		boolean nulo = false;
@@ -108,7 +109,23 @@ class LucaSteamProyecto2ApplicationTests {
 	}
 	
 	
-	
+	@Test
+	void testBorradoNoExiste() {
+		boolean antesEsta = false;
+		boolean despuesEsta = true;
+		
+		controller.altaJuegos(new Videojuego(80000, "Lullaby"));
+		
+		if(controller.buscarJuego(80000).isPresent()) {
+			antesEsta=true;
+		}
+		controller.borrarJuego(80000);
+		if( ! controller.buscarJuego(80000).isPresent()) {
+			despuesEsta=false;
+		}
+		
+		assertThat(antesEsta && !despuesEsta);
+	}
 	
 	
 	
