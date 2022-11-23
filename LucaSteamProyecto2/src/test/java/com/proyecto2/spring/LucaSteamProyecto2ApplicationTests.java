@@ -115,15 +115,25 @@ class LucaSteamProyecto2ApplicationTests {
 		boolean antesEsta = false;
 		boolean despuesEsta = true;
 		
-		controller.altaJuegos(new Videojuego(80000, "Lullaby"));
-		
-		if(controller.buscarJuego(80000).isPresent()) {
-			antesEsta=true;
-		}
-		controller.borrarJuego(80000);
 		try {
-			controller.buscarJuego(80000);
-		} catch (EmptyResultDataAccessException ex) {
+			if(controller.buscarJuego(10000).isPresent()) {
+				antesEsta=true;
+			}
+		} catch(EmptyResultDataAccessException ex) {
+			antesEsta=false;
+		}
+		
+		try {
+			controller.borrarJuego(10000);
+		}catch(EmptyResultDataAccessException ex) {
+			assertThat(true).isEqualTo(false);
+		}
+		
+		try {
+			if(controller.buscarJuego(10000).isPresent()) {
+				despuesEsta=true;
+			}
+		} catch(EmptyResultDataAccessException ex) {
 			despuesEsta=false;
 		}
 		
