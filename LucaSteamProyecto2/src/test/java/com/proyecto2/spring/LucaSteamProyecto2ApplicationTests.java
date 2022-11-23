@@ -53,7 +53,7 @@ class LucaSteamProyecto2ApplicationTests {
 	
 	@Test
 	void testListaCreadaNoVacia() {
-		Videojuego j1 = new Videojuego(1, "a" );
+		Videojuego j1 = new Videojuego(1, "a");
 		Videojuego j2 = new Videojuego(2, "b" );
 
 		controller.altaJuegos(j1);
@@ -68,5 +68,12 @@ class LucaSteamProyecto2ApplicationTests {
 		
 	}
 	
+	
+	@Test
+	void testAltaExiste() {
+		Videojuego juego = new Videojuego(99999, "aaa");
+		controller.altaJuegos(juego);
+		assertThat(controller.buscarJuego(99999).get()).isNotNull();
+	}
 	
 }
