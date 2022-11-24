@@ -16,5 +16,5 @@ public interface VideojuegoBBDD extends JpaRepository<Videojuego, Integer>{
 	
 	public List<Videojuego> findByGenero(String genero);
 		
-	
+	public List<Videojuego> findBySigloXX();
 }
