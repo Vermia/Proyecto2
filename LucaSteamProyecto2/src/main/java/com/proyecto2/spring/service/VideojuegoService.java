@@ -26,5 +26,5 @@ public interface VideojuegoService {
 	
 	public List<Videojuego> findByAniosPares();
 	
-	public Videojuego save();
+	//public Videojuego save();
 }
