@@ -31,6 +31,10 @@ public class Videojuego {
 	public Videojuego(int id, String nombre) {
 		this.id=id; this.nombre=nombre;
 	}
+	
+	public Videojuego(int id, String nombre, int lanzamiento, String editora) {
+		this.id=id; this.nombre=nombre; this.lanzamiento = lanzamiento; this.editora=editora;
+	}
 
 	public Videojuego(int id, String nombre, int lanzamiento, String editora, String plataforma, String genero,
 			double ventasamerica, double ventaseuropa, double ventasjapon, double ventasotros) {
@@ -151,6 +155,12 @@ public class Videojuego {
 				+ ", plataforma=" + plataforma + ", genero=" + genero + ", ventasamerica=" + ventasamerica
 				+ ", ventaseuropa=" + ventaseuropa + ", ventasjapon=" + ventasjapon + ", ventasotros=" + ventasotros
 				+ ", ventasglobal=" + ventasglobal + "]";
+	}
+	
+	public boolean equals(Videojuego other) {
+		if(nombre==other.getNombre() && lanzamiento ==other.getLanzamiento() && editora.equals(other.getEditora())) {
+			return true;
+		} else return false;
 	}
 
 }

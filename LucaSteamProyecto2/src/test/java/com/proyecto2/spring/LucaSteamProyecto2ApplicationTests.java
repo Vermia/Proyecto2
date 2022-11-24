@@ -16,6 +16,9 @@ import org.springframework.http.ResponseEntity;
 import com.proyecto2.spring.controller.VideojuegoController;
 import com.proyecto2.spring.model.Videojuego;
 import com.proyecto2.spring.repository.VideojuegoRepository;
+
+import utils.Randomizador;
+
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.dao.EmptyResultDataAccessException;
 
@@ -182,6 +185,21 @@ class LucaSteamProyecto2ApplicationTests {
 		assertThat(hayUnoImpar).isEqualTo(false);
 	}
 	
-	
+	@Test
+	void testJuegoActualizadoNoIgual() {
+		Videojuego juegoParaActualizar =null;
+		try {
+			juegoParaActualizar = controller.buscarJuego(3000).get();
+		} catch(EmptyResultDataAccessException ex) {
+			assertThat(true).isEqualTo(false);
+		}
+		
+		Videojuego juegoActualizado = controller.actualizar(new Videojuego(3000, "Nombre nuevo", Randomizador.randomNumber(1960, 2009), "Noentiendo"));
+		try {
+			assertThat( ! juegoParaActualizar.equals(juegoActualizado));
+		} catch(NullPointerException ex) {
+			assertThat(true).isEqualTo(false);
+		}
+	}
 	
 }

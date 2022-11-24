@@ -173,7 +173,7 @@ public class VideojuegoController {
 	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) ,
 	@ApiResponse(responseCode = "404", description = "No encontrado ", content = @Content)})
 	@PutMapping
-	public Videojuego actualizar() {
-		return service.save();
+	public Videojuego actualizar(Videojuego videojuego) {
+		return service.save(videojuego);
 	}
 }
