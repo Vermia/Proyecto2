@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.proyecto2.spring.controller.error.VideojuegoNotFoundException;
 import com.proyecto2.spring.model.Videojuego;
 import com.proyecto2.spring.service.VideojuegoService;
 
@@ -123,8 +124,8 @@ public class VideojuegoController {
 		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) ,
 		@ApiResponse(responseCode = "404", description = "No encontrado ", content = @Content)})
 		@GetMapping("/{id}")
-	public Optional<Videojuego> buscarJuego(@PathVariable int id) {
-		return service.findById(id);
+	public Videojuego buscarJuego(@PathVariable int id) {
+		return service.findById(id).orElseThrow(VideojuegoNotFoundException::new);
 	}
 	
 	/**
