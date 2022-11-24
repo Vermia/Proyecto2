@@ -124,6 +124,27 @@ public class VideojuegoController {
 		}
 		return ResponseEntity.ok(videojuegos);
 	}
+	
+	/**
+	 * @author martin
+	 * @return respuesta del servidor
+	 * Este metodo devuelve los juegos 
+	 */
+	@Operation(summary = "Listar los juegos del siglo XX", description = "Crea y muestra una lista con todos los videojuegos del siglo XX", tags = {
+		"videojuego" })
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Juegos mostrados", content = {
+				@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
+		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
+	@GetMapping("/sigloXX")
+	public ResponseEntity<Collection<Videojuego>> filtrarPorSigloXX(){
+		Collection<Videojuego> videojuegos = service.findBySigloXX();
+
+		if (videojuegos.isEmpty()) {
+			return ResponseEntity.noContent().build();
+		}
+		return ResponseEntity.ok(videojuegos);
+	}
 
 	/**
 	 * 

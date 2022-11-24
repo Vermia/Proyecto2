@@ -10,7 +10,4 @@ public interface VideojuegoRepository {
 	
 	
 	public List<Videojuego> cargaJuegos();
-
-
-
 }
