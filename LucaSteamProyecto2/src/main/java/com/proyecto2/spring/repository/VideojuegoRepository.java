@@ -20,5 +20,5 @@ public interface VideojuegoRepository {
 	
 	public void deleteById(int id);
 	
-	//public Videojuego save();
+	public Videojuego save();
 }

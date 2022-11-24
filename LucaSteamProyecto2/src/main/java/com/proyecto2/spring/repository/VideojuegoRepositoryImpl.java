@@ -134,10 +134,10 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	 * @author Pedro
 	 * 		   Método para guardar videojuegos.
 	 */
-	/**@Override
+	@Override
 	public Videojuego save(){
 		return videojuegoBBDD.save();
-	}*/
+	}
 
 	/**
 	 * @author Pablo
