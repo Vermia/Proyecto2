@@ -145,7 +145,6 @@ public class VideojuegoController {
 		}
 		return ResponseEntity.ok(videojuegos);
 	}
-
 	/**
 	 * 
 	 * @param id
