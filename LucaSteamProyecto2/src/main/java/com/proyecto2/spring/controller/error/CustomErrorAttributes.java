@@ -19,29 +19,29 @@ public class CustomErrorAttributes extends DefaultErrorAttributes{
 	
 	private static final Logger logger = LoggerFactory.getLogger(VideojuegoController.class);
 
-	private static final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	private static final DateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
 	/**
 	 * @author Pablo
 	 * Metodo que devuelve los errores de los atributos
 	 */
-	public Map<String, Object> getErrorAttributes(WebRequest webRequest, ErrorAttributeOptions options) {
-		logger.info("------ getErrorAttributes(): " + options);
-		Map<String, Object> errorAttributes = super.getErrorAttributes(webRequest, options);
-		logger.info("------ getErrorAttributes(): " + options);		
+	public Map<String, Object> getErrorAttributes(WebRequest webRequest, ErrorAttributeOptions opciones) {
+		logger.info("------ getErrorAttributes(): " + opciones);
+		Map<String, Object> errorAttributes = super.getErrorAttributes(webRequest, opciones);
+		logger.info("------ getErrorAttributes(): " + opciones);		
 
 		Object timestamp = errorAttributes.get("timestamp");
 		if (timestamp == null) {
-			errorAttributes.put("timestamp", dateFormat.format(new Date()));
+			errorAttributes.put("timestamp", formatoDeFecha.format(new Date()));
 		} else {
-			errorAttributes.put("timestamp", dateFormat.format((Date) timestamp));
+			errorAttributes.put("timestamp", formatoDeFecha.format((Date) timestamp));
 		}
 
-		errorAttributes.remove("trace");
+		errorAttributes.remove("traza");
 
 		errorAttributes.put("jdk", System.getProperty("java.version"));
 		
-		errorAttributes.put("infoadicional", "videojuego no desarrollado");		
+		errorAttributes.put("infoadicional", "Videojuego no desarrollado");		
 
 		return errorAttributes;
 	}
