@@ -176,6 +176,14 @@ public class VideojuegoController {
 		return service.findByGenero(genero);
 	}
 	 
+	
+	/**
+	 * @return Método que muestra los videojuegos de la plataforma por lanzamiento en año par
+	 */
+	@GetMapping("/fechapares")
+	public List<Videojuego> findByAniosPares(){
+		return service.findByAniosPares();
+	}
 
 	@Operation(summary = "Borrar un videojuego", description = "Busca un videojuego en la base de datos y lo elimina", tags = {
 		"videojuego" })
