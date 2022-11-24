@@ -134,8 +134,17 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	 * @author Pedro
 	 * 		   Método para guardar videojuegos.
 	 */
-	@Override
+	/**@Override
 	public Videojuego save(){
 		return videojuegoBBDD.save();
+	}*/
+
+	/**
+	 * @author Pablo
+	 * Metodo que elimina un videojuego por el identificador
+	 */
+	@Override
+	public void deleteById(int id) {
+		videojuegoBBDD.deleteById(id);
 	}
 }

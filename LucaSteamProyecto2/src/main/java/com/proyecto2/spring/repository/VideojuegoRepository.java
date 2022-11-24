@@ -18,5 +18,7 @@ public interface VideojuegoRepository {
 	
 	public List<Videojuego> findByAniosPares();
 	
-	public Videojuego save();
+	public void deleteById(int id);
+	
+	//public Videojuego save();
 }
