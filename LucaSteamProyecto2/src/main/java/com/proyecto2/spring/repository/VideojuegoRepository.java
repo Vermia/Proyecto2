@@ -11,6 +11,6 @@ public interface VideojuegoRepository {
 	
 	public List<Videojuego> cargaJuegos();
 
-
+	public List<Videojuego>findByGenero(String genero);
 
 }

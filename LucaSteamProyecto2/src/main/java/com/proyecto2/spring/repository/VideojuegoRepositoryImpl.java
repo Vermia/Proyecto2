@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +30,8 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository{
 	 * @author Martin
 	 * Metodo para cargar los juegos del CSV
 	 */
+	@Autowired
+	private VideojuegoBBDD vb;
 	@Override
 	public List<Videojuego> cargaJuegos() {
 		ArrayList<Videojuego> coleccionObtenida = new ArrayList<Videojuego>();
@@ -93,6 +96,16 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository{
 			//Logear error
 		}
 		return coleccionObtenida;
+	}
+	
+	/**
+	 *  @author Alvaro Blanco
+	 *  @param genero
+	 *  He creado un método para buscar juegos por genero
+	 */
+	@Override
+	public List<Videojuego> findByGenero(String genero) {
+		return vb.findByGenero(genero);
 	}
 
 
