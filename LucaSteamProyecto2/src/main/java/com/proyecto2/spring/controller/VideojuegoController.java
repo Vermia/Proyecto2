@@ -1,15 +1,17 @@
 package com.proyecto2.spring.controller;
 
-import java.net.URI;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.validation.Valid;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +26,7 @@ import com.proyecto2.spring.model.Videojuego;
 import com.proyecto2.spring.service.VideojuegoService;
 
 import io.swagger.v3.oas.annotations.Operation;
+
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -42,6 +45,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  *
  */
 @RestController
+@Validated
 @RequestMapping("/videojuego")
 @Tag(name = "videojuego", description = "Juegos API")
 public class VideojuegoController {
@@ -64,7 +68,7 @@ public class VideojuegoController {
 	}
 
 	@PostMapping()
-	public void altaJuegos(@RequestBody Videojuego juego) {
+	public void altaJuegos(@Valid @RequestBody Videojuego juego) {
 		service.save(juego);
 	}
 
@@ -123,10 +127,29 @@ public class VideojuegoController {
 				@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
 		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) ,
 		@ApiResponse(responseCode = "404", description = "No encontrado ", content = @Content)})
-		@GetMapping("/{id}")
+    
+	/**@GetMapping("/{id}")
 	public Videojuego buscarJuego(@PathVariable int id) {
 		return service.findById(id).orElseThrow(VideojuegoNotFoundException::new);
+	}*/
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Optional<Videojuego>> buscarJuego(@PathVariable int id) {
+		Optional<Videojuego> videojuego = service.findById(id);
+		
+		try {
+			if (videojuego.isEmpty()) {
+				return ResponseEntity.notFound().build();
+				
+			}
+		} catch (NoSuchElementException ex) {
+			throw new VideojuegoNotFoundException();
+		}
+		return ResponseEntity.ok(videojuego);
 	}
+	
+	
+	
 	
 	/**
 	 * @param genero

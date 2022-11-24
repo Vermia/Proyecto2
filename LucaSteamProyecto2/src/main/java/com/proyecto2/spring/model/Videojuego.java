@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "videojuegos")
@@ -14,8 +17,15 @@ public class Videojuego {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotEmpty(message = "El nombre del juego no puede estars vacío")
 	private String nombre;
+	//Valor maximo
+	@Max(value = 2022) 
+	//Valor minimo
+	@Min(value = 1980) 
 	private int lanzamiento;
+	
+	@NotEmpty(message = "Se debe de indicar la editora")
 	private String editora;
 	private String plataforma;
 	private String genero;
@@ -63,6 +73,7 @@ public class Videojuego {
 		this.id = id;
 	}
 
+	@Column(name="nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -70,7 +81,7 @@ public class Videojuego {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	@Column(name="lanzamiento")
 	public int getLanzamiento() {
 		return lanzamiento;
 	}
@@ -78,7 +89,7 @@ public class Videojuego {
 	public void setLanzamiento(int lanzamiento) {
 		this.lanzamiento = lanzamiento;
 	}
-
+	@Column(name="editora")
 	public String getEditora() {
 		return editora;
 	}
@@ -86,7 +97,7 @@ public class Videojuego {
 	public void setEditora(String editora) {
 		this.editora = editora;
 	}
-
+	@Column(name="plataforma")
 	public String getPlataforma() {
 		return plataforma;
 	}
@@ -94,7 +105,7 @@ public class Videojuego {
 	public void setPlataforma(String plataforma) {
 		this.plataforma = plataforma;
 	}
-
+	@Column(name="genero")
 	public String getGenero() {
 		return genero;
 	}

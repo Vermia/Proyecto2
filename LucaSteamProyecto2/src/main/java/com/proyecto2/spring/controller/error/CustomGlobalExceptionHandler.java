@@ -39,6 +39,8 @@ public class CustomGlobalExceptionHandler  extends ResponseEntityExceptionHandle
 		response.sendError(HttpStatus.BAD_REQUEST.value());
 	}
 	
+	
+	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 		HttpHeaders headers, HttpStatus status, WebRequest request) {

@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 
 import com.proyecto2.spring.model.Videojuego;
