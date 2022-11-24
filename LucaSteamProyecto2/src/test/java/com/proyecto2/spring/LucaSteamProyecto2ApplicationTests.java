@@ -8,6 +8,7 @@ import java.util.Collection;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,7 @@ class LucaSteamProyecto2ApplicationTests {
 	@Autowired
 	VideojuegoRepository vidRep;
 
+
 	/**
 	 * Test que omprueba que el archivo csv exista
 	 */
@@ -41,6 +43,8 @@ class LucaSteamProyecto2ApplicationTests {
 
 		assertThat(lista).isNotEmpty();
 	}
+	
+	
 
 	/**
 	 * Comprobar si la carga de juegos es igual a
@@ -109,7 +113,10 @@ class LucaSteamProyecto2ApplicationTests {
 	 * assertThat(controller.filtrarPorGenero("Action")).isNotEmpty(); }
 	 */
 	
-	
+	/**
+	 * @author Martin
+	 * Comprueba que un juego existe, y después lo borra y comprueba que no exista después de borrarlo
+	 */
 	@Test
 	void testBorradoNoExiste() {
 		boolean antesEsta = false;
@@ -140,6 +147,40 @@ class LucaSteamProyecto2ApplicationTests {
 		assertThat(antesEsta && !despuesEsta);
 	}
 	
+	/**
+	 * @author Martin
+	 * Al filtrar por siglo XX, comprobamos que en esa lista no haya nignuno fuera de ese siglo
+	 */
+	@Test
+	void testTodasEstanSigloXX() {
+		ArrayList<Videojuego> juegosXX = (ArrayList<Videojuego>) controller.filtrarPorSigloXX().getBody(); 
+		
+		boolean hayUnoFueraDeRango = false;
+		for(Videojuego v : juegosXX) {
+			if(v.getLanzamiento()<1900 || v.getLanzamiento() >2000) {
+				hayUnoFueraDeRango=true;
+				break;
+			}
+		}
+		assertThat(hayUnoFueraDeRango).isEqualTo(false);
+	}
+	
+	/**
+	 * @author
+	 * Al filtrar por juegos de años pares, comprueba que en esa lista no haya ninguno de año impar
+	 */
+	@Test
+	void testNingunoEsImpar() {
+		ArrayList<Videojuego> juegosPares = (ArrayList<Videojuego>) controller.findByAniosPares();
+		boolean hayUnoImpar = false;
+		for(Videojuego v : juegosPares) {
+			if(v.getLanzamiento() % 2 == 1) {
+				hayUnoImpar=true;
+				break;
+			}
+		}
+		assertThat(hayUnoImpar).isEqualTo(false);
+	}
 	
 	
 	
