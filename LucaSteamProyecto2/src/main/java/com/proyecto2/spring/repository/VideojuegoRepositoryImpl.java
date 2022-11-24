@@ -100,7 +100,8 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 
 	/**
 	 * @author Alvaro Blanco
-	 * @param genero He creado un método para buscar juegos por genero
+	 * @param genero
+	 * He creado un método para buscar juegos por genero
 	 */
 
 	@Override
@@ -109,13 +110,24 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	}
 
 	/**
-	 * @author Pedro Método que filtra todos los juegos lanzados durante el siglo XX
+	 * @author Pedro
+	 * 		   Método que filtra todos los juegos lanzados durante el siglo XX
 	 *         (es decir, entre los años 1900 y 1999).
 	 */
 	
 	@Override
 	public List<Videojuego> findBySigloXX() {
 		return videojuegoBBDD.findBySigloXX();
+	}
+	
+	/**
+	 * @author Pedro
+	 *         Método que filtra los videojuegos que fueron lanzados en anios pares.
+	 */
+	
+	@Override
+	public List<Videojuego> findByAniosPares(){
+		return videojuegoBBDD.findByAniosPares();
 	}
 	 
 

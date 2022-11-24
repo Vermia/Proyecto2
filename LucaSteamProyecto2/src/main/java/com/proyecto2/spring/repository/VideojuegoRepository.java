@@ -15,4 +15,6 @@ public interface VideojuegoRepository {
 	public List<Videojuego>findByGenero(String genero);
 	
 	public List<Videojuego> findBySigloXX();
+	
+	public List<Videojuego> findByAniosPares();
 }
