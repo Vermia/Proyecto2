@@ -95,6 +95,15 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	public List<Videojuego> findBySigloXX() {
 		return videojuegoBBDD.findBySigloXX();
 	}
+	
+	/**
+	 * @autor Alvaro
+	 * Muestra los videojuegos de años pares
+	 */
+	@Override
+	public List<Videojuego> findByAniosPares() {
+		return videojuegoBBDD.findByAniosPares();
+	}
 	 
 
 

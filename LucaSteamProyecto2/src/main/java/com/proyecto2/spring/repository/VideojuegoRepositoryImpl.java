@@ -127,7 +127,7 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	
 	@Override
 	public List<Videojuego> findByAniosPares(){
-		return videojuegoBBDD.finByAniosPares();
+		return videojuegoBBDD.findByAniosPares();
 	}
 	 
 

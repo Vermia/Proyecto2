@@ -20,5 +20,5 @@ public interface VideojuegoBBDD extends JpaRepository<Videojuego, Integer>{
 	public List<Videojuego> findBySigloXX();
 
 	@Query(value = "SELECT * FROM videojuegos WHERE lanzamiento % 2 = 0 ", nativeQuery = true)
-	public List<Videojuego> finByAniosPares();
+	public List<Videojuego> findByAniosPares();
 }
