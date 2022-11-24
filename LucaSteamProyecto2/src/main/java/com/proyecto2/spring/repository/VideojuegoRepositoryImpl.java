@@ -31,7 +31,7 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	 * @author Martin Metodo para cargar los juegos del CSV
 	 */
 	@Autowired
-	private VideojuegoBBDD vb;
+	private VideojuegoBBDD videojuegoBBDD;
 	@Override
 	public List<Videojuego> cargaJuegos() {
 		ArrayList<Videojuego> coleccionObtenida = new ArrayList<Videojuego>();
@@ -104,7 +104,7 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	 */
 	@Override
 	public List<Videojuego> findByGenero(String genero) {
-		return vb.findByGenero(genero);
+		return videojuegoBBDD.findByGenero(genero);
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	 */
 	@Override
 	public List<Videojuego> findBySigloXX() {
-		return vb.findBySigloXX();
+		return videojuegoBBDD.findBySigloXX();
 	}
 
 }

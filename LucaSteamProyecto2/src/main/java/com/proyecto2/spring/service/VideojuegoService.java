@@ -21,4 +21,6 @@ public interface VideojuegoService {
 	public Videojuego deleteById(int id);
 
 	public List<Videojuego> findByGenero(String genero);
+	
+	public List<Videojuego> findBySigloXX();
 }
