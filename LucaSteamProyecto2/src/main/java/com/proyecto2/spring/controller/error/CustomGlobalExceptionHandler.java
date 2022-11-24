@@ -27,11 +27,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  */
 
 public class CustomGlobalExceptionHandler  extends ResponseEntityExceptionHandler{
-	/*@ExceptionHandler(VideojuegoNotFoundException.class)
+	@ExceptionHandler(VideojuegoNotFoundException.class)
 	public void springHandleNotFound(HttpServletResponse response) throws IOException {
-		logger.info("------ StudentNotFoundException() ");
+		logger.info("------ VideojuegoNotFoundException() ");
 		response.sendError(HttpStatus.NOT_FOUND.value());
-	}*/
+	}
 	
 	@ExceptionHandler(ConstraintViolationException.class)
 	public void constraintViolationException(HttpServletResponse response) throws IOException {
@@ -39,37 +39,35 @@ public class CustomGlobalExceptionHandler  extends ResponseEntityExceptionHandle
 		response.sendError(HttpStatus.BAD_REQUEST.value());
 	}
 	
-	/*@Override
+	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 		HttpHeaders headers, HttpStatus status, WebRequest request) {
 
 		logger.info("------ handleMethodArgumentNotValid()");
 		
 		CustomErrorJson customError = new CustomErrorJson();
-
-
 		customError.setTimestamp(new Date());
-		customError.setStatus(status.value());
+		customError.setEstado(status.value());
 		customError.setError(status.name());
 
-		List<String> messages = new ArrayList<String>();
+		List<String> mensajes = new ArrayList<String>();
 		for (FieldError error : ex.getBindingResult().getFieldErrors()) {
-			messages.add(error.getField() + ": " + error.getDefaultMessage());
+			mensajes.add(error.getField() + ": " + error.getDefaultMessage());
 		}
-		customError.setMessage(messages);
+		customError.setMensaje(mensajes);
 		
 
 		String uri = request.getDescription(false);
 		uri = uri.substring(uri.lastIndexOf("=")+1);
-		customError.setPath(uri);
+		customError.setRuta(uri);
 
 		return new ResponseEntity<>(customError, headers, status);
 
-	}*/
+	}
 	
 	@Override
 	protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex,
-		HttpHeaders headers, HttpStatus status, WebRequest request) {
+		HttpHeaders headers, HttpStatus estado, WebRequest request) {
 		logger.info("------ handleHttpRequestMethodNotSupported()");
 		StringBuilder builder = new StringBuilder();
 		builder.append(ex.getMethod());
@@ -78,9 +76,9 @@ public class CustomGlobalExceptionHandler  extends ResponseEntityExceptionHandle
 
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()));
-		body.put("status", status.value());
+		body.put("estado", estado.value());
 		body.put("error", ex.getLocalizedMessage());
-		body.put("message", builder.toString());
+		body.put("mensaje", builder.toString());
 
 		return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.METHOD_NOT_ALLOWED);
 

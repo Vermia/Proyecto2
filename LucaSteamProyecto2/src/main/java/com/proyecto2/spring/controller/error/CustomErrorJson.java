@@ -61,6 +61,10 @@ public class CustomErrorJson {
 	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
+	
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = this.cambiarTimeStamp(timestamp);
+	}
 
 	public int getEstado() {
 		return estado;
