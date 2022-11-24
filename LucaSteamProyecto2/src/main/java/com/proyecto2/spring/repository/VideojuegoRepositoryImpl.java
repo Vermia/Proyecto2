@@ -116,7 +116,7 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	 */
 	
 	@Override
-	public List<Videojuego> findBySigloXX() {
+	public List<Videojuego> findBySigloXX(){
 		return videojuegoBBDD.findBySigloXX();
 	}
 	
@@ -130,5 +130,12 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 		return videojuegoBBDD.findByAniosPares();
 	}
 	 
-
+	/**
+	 * @author Pedro
+	 * 		   Método para guardar videojuegos.
+	 */
+	@Override
+	public Videojuego save(){
+		return videojuegoBBDD.save();
+	}
 }
