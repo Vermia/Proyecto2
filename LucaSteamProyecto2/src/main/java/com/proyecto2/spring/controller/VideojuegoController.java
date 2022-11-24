@@ -136,7 +136,7 @@ public class VideojuegoController {
 		@ApiResponse(responseCode = "200", description = "Juegos mostrados", content = {
 				@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
 		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) })
-	@GetMapping("/sigloXX")
+	@GetMapping("/sigloxx")
 	public ResponseEntity<Collection<Videojuego>> filtrarPorSigloXX(){
 		Collection<Videojuego> videojuegos = service.findBySigloXX();
 
@@ -170,10 +170,12 @@ public class VideojuegoController {
 	 * @return Método que se encarga de buscar los videojuegos por el filtro
 	 * deseado por el usuario
 	 */
+	
 	@GetMapping("/genero/{genero}")
-	public List<Videojuego> filtrarPorGenero(@PathVariable String genero){
+	public List<Videojuego> filtrarPorGenero(@PathVariable String genero) {
 		return service.findByGenero(genero);
 	}
+	 
 
 	@Operation(summary = "Borrar un videojuego", description = "Busca un videojuego en la base de datos y lo elimina", tags = {
 		"videojuego" })
