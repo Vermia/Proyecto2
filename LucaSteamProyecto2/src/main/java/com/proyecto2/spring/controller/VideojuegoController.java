@@ -152,7 +152,7 @@ public class VideojuegoController {
 	@ApiResponses(value = {
 		@ApiResponse(responseCode = "200", description = "Juego eliminado", content = {
 				@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
-		@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) ,
+		@aApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) ,
 		@ApiResponse(responseCode = "404", description = "No encontrado ", content = @Content)})
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Videojuego> borrarJuego(@PathVariable int id) {
