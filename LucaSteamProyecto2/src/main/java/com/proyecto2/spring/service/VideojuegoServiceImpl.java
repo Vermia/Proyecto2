@@ -81,7 +81,7 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	 * Muestra un Videojuego del genero que desee el usuario
 	 */
 	public List<Videojuego> findByGenero(String genero) {
-		return videojuegoBBDD.findByGenero(genero);
+		return videoJuegoRepository.findByGenero(genero);
 	}
 
 
