@@ -25,4 +25,6 @@ public interface VideojuegoService {
 	public List<Videojuego> findBySigloXX();
 	
 	public List<Videojuego> findByAniosPares();
+	
+	public Videojuego save();
 }
