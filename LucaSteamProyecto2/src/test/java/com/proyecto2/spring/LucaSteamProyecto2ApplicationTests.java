@@ -126,7 +126,7 @@ class LucaSteamProyecto2ApplicationTests {
 		boolean despuesEsta = true;
 		
 		try {
-			if(controller.buscarJuego(10000).isPresent()) {
+			if(controller.buscarJuego(10000) != null) {
 				antesEsta=true;
 			}
 		} catch(EmptyResultDataAccessException ex) {
@@ -140,7 +140,7 @@ class LucaSteamProyecto2ApplicationTests {
 		}
 		
 		try {
-			if(controller.buscarJuego(10000).isPresent()) {
+			if(controller.buscarJuego(10000) != null) {
 				despuesEsta=true;
 			}
 		} catch(EmptyResultDataAccessException ex) {
