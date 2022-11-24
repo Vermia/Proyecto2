@@ -165,7 +165,7 @@ public class VideojuegoController {
 		return ResponseEntity.ok(videojuego);
 	}
 	
-	@Operation(summary = "Actualizar un videojuego", description = "Actualiza un videojuego existente de la base de datos", tags = {
+	/**@Operation(summary = "Actualizar un videojuego", description = "Actualiza un videojuego existente de la base de datos", tags = {
 	"videojuego" })
 	@ApiResponses(value = {
 	@ApiResponse(responseCode = "200", description = "Juego actualizado", content = {
@@ -175,5 +175,5 @@ public class VideojuegoController {
 	@PutMapping
 	public Videojuego actualizar() {
 		return service.save();
-	}
+	}*/
 }
