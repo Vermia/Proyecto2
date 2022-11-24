@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import com.proyecto2.spring.controller.VideojuegoController;
 import com.proyecto2.spring.model.Videojuego;
 import com.proyecto2.spring.repository.VideojuegoRepository;
+import com.proyecto2.spring.service.VideojuegoService;
 
 import utils.Randomizador;
 
@@ -31,6 +32,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 class LucaSteamProyecto2ApplicationTests {
 	@Autowired
 	VideojuegoController controller;
+	@Autowired
+	VideojuegoService service;
 	@Autowired
 	VideojuegoRepository vidRep;
 
@@ -106,8 +109,9 @@ class LucaSteamProyecto2ApplicationTests {
 	@Test
 	void testAltaExiste() {
 		Videojuego juego = new Videojuego(99998, "aaa");
-		controller.altaJuegos(juego);
-		assertThat(controller.buscarJuego(99998)).isNotNull();
+		int id = juego.getId();
+		service.save(juego);
+		assertThat(service.findById(id)).isEmpty();
 	}
 	
 	/*
@@ -125,8 +129,11 @@ class LucaSteamProyecto2ApplicationTests {
 		boolean antesEsta = false;
 		boolean despuesEsta = true;
 		
+		Videojuego newGame=service.save( new Videojuego(99999999, "WGWEG") );
+		int newID = newGame.getId();
+		
 		try {
-			if(controller.buscarJuego(10000) != null) {
+			if( ! service.findById(newID).isEmpty()) {
 				antesEsta=true;
 			}
 		} catch(EmptyResultDataAccessException ex) {
@@ -134,13 +141,13 @@ class LucaSteamProyecto2ApplicationTests {
 		}
 		
 		try {
-			controller.borrarJuego(10000);
+			service.deleteById(newID);
 		}catch(EmptyResultDataAccessException ex) {
 			assertThat(true).isEqualTo(false);
 		}
 		
 		try {
-			if(controller.buscarJuego(10000) != null) {
+			if( ! service.findById(newID).isEmpty()) {
 				despuesEsta=true;
 			}
 		} catch(EmptyResultDataAccessException ex) {

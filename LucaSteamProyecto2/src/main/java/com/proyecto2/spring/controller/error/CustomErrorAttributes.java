@@ -37,7 +37,7 @@ public class CustomErrorAttributes extends DefaultErrorAttributes{
 			errorAttributes.put("timestamp", formatoDeFecha.format((Date) timestamp));
 		}
 
-		errorAttributes.remove("traza");
+		errorAttributes.remove("trace");
 
 		errorAttributes.put("jdk", System.getProperty("java.version"));
 		
