@@ -75,14 +75,27 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 		return j.get();
 	}
 
-	@Override
+	//@Override
 	/**
 	 * @author Pablo
 	 * Muestra un Videojuego del genero que desee el usuario
 	 */
+	
 	public List<Videojuego> findByGenero(String genero) {
-		return videojuegoBBDD.findByGenero(genero);
+		return videoJuegoRepository.findByGenero(genero);
 	}
+	 
+	
+	/**
+	 * @author Pablo
+	 * Muestra los videojuegos publicados entre 1990 y 1999
+	 */
+	
+	@Override
+	public List<Videojuego> findBySigloXX() {
+		return videojuegoBBDD.findBySigloXX();
+	}
+	 
 
 
 

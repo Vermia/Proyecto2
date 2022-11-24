@@ -15,7 +15,7 @@ public interface VideojuegoBBDD extends JpaRepository<Videojuego, Integer>{
 	public List<Videojuego> findByNombre(String nombre);
 	
 	public List<Videojuego> findByGenero(String genero);
-		
-	@Query(value="SELECT * FROM videojuegos WHERE lanzamiento>1900 AND lanzamiento<2000", nativeQuery=true)
+
+	@Query(value= "SELECT * FROM videojuegos WHERE lanzamiento >= 1900 AND lanzamiento <= 1999", nativeQuery=true)
 	public List<Videojuego> findBySigloXX();
 }
