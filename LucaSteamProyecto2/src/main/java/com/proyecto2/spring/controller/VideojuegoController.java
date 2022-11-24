@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,8 +47,6 @@ public class VideojuegoController {
 	@Autowired
 	private VideojuegoService service;
 
-	//private static final Logger logger = LoggerFactory.getLogger(VideojuegoController.class);
-
 	/**
 	 * 
 	 * @return Metodo que se encarga de cargar los juegos de un csv.
@@ -63,42 +62,6 @@ public class VideojuegoController {
 
 	}
 
-	/**
-	 * 
-	 * @return Método que se encarga de dar de alta los juegos y guardarlos en la
-	 *         BBDD
-	 * 
-	 * 
-	 */
-
-	/*
-	 * @Operation(summary = "Dar de alta un juego", description =
-	 * "A partir del cuerpo de la request, agregar un nuevo juego a la base de datos"
-	 * , tags = { "videojuego" })
-	 * 
-	 * @ApiResponses(value = {
-	 * 
-	 * @ApiResponse(responseCode = "201", description = "Juego creado", content = {
-	 * 
-	 * @Content(mediaType = "application/json", schema = @Schema(implementation =
-	 * Videojuego.class)) }),
-	 * 
-	 * @ApiResponse(responseCode = "400", description =
-	 * "No válido (NO implementado) ", content = @Content) })
-	 */
-	
-	/*@PostMapping
-	public ResponseEntity<?> altaJuegos(@RequestBody Videojuego juego) {
-		
-		Videojuego resultado = this.service.save(juego);
-
-		System.out.println("---------- Valor del ID: " + resultado.getId());
-		URI ubicacion = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resultado.getId())
-				.toUri();
-		System.out.println("-------- URI Location: " + ubicacion);
-		return ResponseEntity.created(ubicacion).build();
-
-	}*/
 	@PostMapping()
 	public void altaJuegos(@RequestBody Videojuego juego) {
 		service.save(juego);
@@ -200,5 +163,17 @@ public class VideojuegoController {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(videojuego);
+	}
+	
+	@Operation(summary = "Actualizar un videojuego", description = "Actualiza un videojuego existente de la base de datos", tags = {
+	"videojuego" })
+	@ApiResponses(value = {
+	@ApiResponse(responseCode = "200", description = "Juego actualizado", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = Videojuego.class)) }),
+	@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content) ,
+	@ApiResponse(responseCode = "404", description = "No encontrado ", content = @Content)})
+	@PutMapping
+	public Videojuego actualizar() {
+		return service.save();
 	}
 }
