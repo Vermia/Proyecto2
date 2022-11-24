@@ -83,6 +83,15 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 	public List<Videojuego> findByGenero(String genero) {
 		return videoJuegoRepository.findByGenero(genero);
 	}
+	
+	/**
+	 * @author Pablo
+	 * Muestra los videojuegos publicados entre 1990 y 1999
+	 */
+	@Override
+	public List<Videojuego> findBySigloXX() {
+		return videoJuegoRepository.findBySigloXX();
+	}
 
 
 
