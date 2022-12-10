@@ -19,7 +19,10 @@ public class LucaSteamProyecto2Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		//System.out.println("----------");
 		videojuegoController.cargaJuegos();
-;	}
+		
+		
+	}
 
 }
